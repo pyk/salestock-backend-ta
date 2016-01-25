@@ -27,18 +27,18 @@ Each category have exactly one sup-category/parent category and many sub-categor
 
 TODO: add image hierarchy of category
 
-#### List
+#### List of categories and corresponding sub-categories
 This endpoint is used for displaying all categories and related sub-categories. It can be useful for navigation, dropdown menu of categories for instance.
 
 ```
-GET /categories - fetch all categories.
+GET /categories - fetch all categories and their corresponding sub-categories.
 
 # curl(1) test, copy & paste this on your terminal
 curl -i -H "Accept: application/json" http://salestock-backend-ta.herokuapp.com/categories
 ``` 
 View in your browser [salestock-backend-ta.herokuapp.com/categories](http://salestock-backend-ta.herokuapp.com/categories).
 
-#### Create
+#### Create a Category
 This endpoint is used to create new category. The payload of request is a JSON object with `name` and `parent_name` field.
 
 ```
@@ -49,6 +49,18 @@ curl -i -H "Content-Type: application/json" -X POST -d '{"name":"Demo Dress", "p
 ```
 
 For the root category, `parent_name` should be empty string. Newly created category will available on list endpoint.
+
+#### Read a Category
+This endpoint is used to get one category with specified id and related sub-categories. 
+
+```
+GET /categories/:id - Request a single category with specified id
+
+# curl(1) test, copy & paste this on your terminal
+curl -i -H "Accept: application/json" http://salestock-backend-ta.herokuapp.com/categories/1
+```
+
+View example in your browser [salestock-backend-ta.herokuapp.com/categories/1](http://salestock-backend-ta.herokuapp.com/categories/1).
 
 ## License
 BSD 3-clause

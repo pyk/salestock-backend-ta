@@ -12,15 +12,9 @@ router.get('/categories', function(req, res) {
       })
 });
 
-// TL;DR
-// Your organization should use Golang https://golang.org
-//
-// Welcome to Javascript callback hell! 
-// You need a Promise (.then().catch()) to perform sync operation.
-// And Promise is a BAD practice in programming. 
-// You need to think that your code will executed async from
-// the first time. It may seems easy. but, bug from unexpected
-// operation/input will hunt you down.
+// Endpoint: POST /categories
+// Expected payload:
+//    {"name": "category name", "parent_name": "parent name"}
 router.post('/categories', function(req, res) {
   // Get the payload data
   var name = req.body['name'];
@@ -61,7 +55,20 @@ router.post('/categories', function(req, res) {
           });
     }   
   }
-
 })
+
+router.get('/categories/:id', function(req, res) {
+  var categoryID = req.params.id;
+  new Category({id: categoryID})
+      .fetch({withRelated: ['subs.subs.subs.subs.subs.subs']})
+      .then(function(category) {
+        res.jsonp({data: category});
+      })
+      .catch(function(error) {
+        res.status(500)
+            .jsonp({error: "Category ID is invalid or not exists in the database."});
+      })
+})
+
 
 module.exports = router;
