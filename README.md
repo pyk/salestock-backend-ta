@@ -1,7 +1,12 @@
-# Salestock Backend Technical Assigment
+# Salestock Backend Technical Assesment
 This is The Salestock Backend TA. They give me two cases, and I choose the product and category management with hierarchical tree data for category. 
 
 The end goal of this TA is to build API endpoint for that case.
+
+## Model & Database
+I keep the database schema fairly simple without sacrificing the end goal of this assesment. Since I use `knex` module and `bookshelf` module to manage migrations, seeds data, and model abstraction this API can be easily extended by another nodejs developers.
+
+I use the adjacency list model as a solution to the hierarchical tree data for category. It's very practical and have a good performance, so far.
 
 ## API Endpoints
 Each description of endpoint will formatted like the following:
@@ -24,8 +29,6 @@ Also, there is a `curl(1)` command that I use to play with the endpoint. You can
 
 ### Categories
 Each category have exactly one sup-category/parent category and many sub-category/childs category.
-
-TODO: add image hierarchy of category
 
 #### List of categories and the corresponding sub-categories
 This endpoint is used for displaying all categories and related sub-categories. It can be useful for navigation, dropdown menu of categories for instance.
@@ -103,12 +106,27 @@ View in your browser [salestock-backend-ta.herokuapp.com/products](http://salest
 #### Create a Product
 This endpoint is used to create new product. The payload of request is a JSON object with `name` and `categories` field. `categories` field have value an array of category name for the product.
 
+Only valid category name will be assigned to a product.
+
 ```
 POST /products - Create new product
 
 # curl(1) test, copy & paste this on your terminal
 curl -i -H "Content-Type: application/json" -X POST -d '{"name":"Product Demo", "categories": ["Dress", "Long Dress"]}' http://salestock-backend-ta.herokuapp.com/products
 ```
+
+#### Read a Product
+This endpoint is used to get one product with specified id and related categories.
+
+```
+GET /products/:id - Request a single product with specified id
+
+# curl(1) test, copy & paste this on your terminal
+curl -i -H "Accept: application/json" http://salestock-backend-ta.herokuapp.com/products/1
+```
+
+View example in your browser [salestock-backend-ta.herokuapp.com/products/1](http://salestock-backend-ta.herokuapp.com/products/1).
+
 
 ## License
 BSD 3-clause

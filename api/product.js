@@ -64,4 +64,17 @@ router.post('/products', function(req, res) {
   }
 })
 
+router.get('/products/:id', function(req, res) {
+  var productID = req.params.id;
+  new Product({id: productID})
+      .fetch({withRelated: ['categories']})
+      .then(function(product) {
+        res.jsonp({data: product});
+      })
+      .catch(function(error) {
+        res.status(500)
+            .jsonp({error: 'Product ID is invalid or not exists in the database.'});
+      })
+})
+
 module.exports = router;
