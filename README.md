@@ -27,7 +27,7 @@ Each category have exactly one sup-category/parent category and many sub-categor
 
 TODO: add image hierarchy of category
 
-#### List of categories and corresponding sub-categories
+#### List of categories and the corresponding sub-categories
 This endpoint is used for displaying all categories and related sub-categories. It can be useful for navigation, dropdown menu of categories for instance.
 
 ```
@@ -61,6 +61,19 @@ curl -i -H "Accept: application/json" http://salestock-backend-ta.herokuapp.com/
 ```
 
 View example in your browser [salestock-backend-ta.herokuapp.com/categories/1](http://salestock-backend-ta.herokuapp.com/categories/1).
+
+#### Update a Category
+This endpoint is used to update category. The payload of request is a JSON object with required `name` field.
+
+```
+PUT /categories/:id - Update a category
+
+# curl(1) test, copy & paste this on your terminal
+# change x with one of category ID
+curl -i -H "Content-Type: application/json" -X PUT -d '{"name":"Update name"}' http://salestock-backend-ta.herokuapp.com/categories/x
+```
+
+
 
 ## License
 BSD 3-clause

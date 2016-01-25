@@ -70,5 +70,24 @@ router.get('/categories/:id', function(req, res) {
       })
 })
 
+router.put('/categories/:id', function(req, res) {
+  var categoryID = req.params.id;
+  var updatedName = req.body['name'];
+
+  if(updatedName != undefined) {
+    new Category({id: categoryID})
+        .save({name: updatedName}, {patch: true})
+        .then(function(updatedCategory) {
+          res.jsonp({status: "200 OK", data: updatedCategory});
+        })
+        .catch(function(error) {
+          res.status(500)
+              .jsonp({error: "Category ID is invalid or not exists in the database."})
+        });
+  } else {
+    res.status(500)
+        .jsonp({error: 'Invalid JSON payload. Please read the documentation.'});
+  }
+})
 
 module.exports = router;
