@@ -1,5 +1,5 @@
 # Salestock Backend Technical Assigment
-This is The Salestock Backend TA. They give me two cases, and I choose the product shopping cart case one. The end goal of this TA is to build API endpoint for shopping cart that production-ready grade. 
+This is The Salestock Backend TA. They give me two cases, and I choose the product and category management with hierarchical tree data for category. The end goal of this TA is to build API endpoint for the case that production-ready grade.
 
 The mandatory assesment points is
 
@@ -8,7 +8,7 @@ The mandatory assesment points is
 
 which 2 of this assesment points should be perfect 5. 
 
-I know, you may think that those assesment points is sounds very subjective. Because different organization have different perspective about how they design REST API and modeling the apps. So, it's hard to have 5 points on this subjective one. 
+I know, you may think that those assesment points is sounds very subjective. Because different organization have different perspective about how they design REST API and modeling the apps. So, it's hard to have 5 points on this subjective one.
 
 I try to ask them to elaborate more and if there is exists some kind of style guide from their organization that I can use as reference. But, I got no answer from them.
 
