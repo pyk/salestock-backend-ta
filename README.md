@@ -10,15 +10,17 @@ You can also use `postman` extension on Google Chrome or similar tool that you a
 ### Categories
 Each category have exactly one sup-category/parent category and many sub-category/childs category.
 
-TODO: add image
+TODO: add image hierarchy of category
+
+#### List
 
 ```
-GET /categories
+GET /categories - fetch all categories.
 
 # curl(1) test, copy & paste this on your terminal
 curl -i -H "Accept: application/json" http://salestock-backend-ta.herokuapp.com/categories
-```
-fetch all categories. 
+``` 
+View in your browser [salestock-backend-ta.herokuapp.com/categories](http://salestock-backend-ta.herokuapp.com/categories).
 
 ## License
 BSD 3-clause
