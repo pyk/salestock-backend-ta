@@ -127,6 +127,17 @@ curl -i -H "Accept: application/json" http://salestock-backend-ta.herokuapp.com/
 
 View example in your browser [salestock-backend-ta.herokuapp.com/products/1](http://salestock-backend-ta.herokuapp.com/products/1).
 
+#### Update a Product
+This endpoint is used to update product. The payload of request is a JSON object with required `name` field.
+
+```
+PUT /products/:id - Update a Product
+
+# curl(1) test, copy & paste this on your terminal
+# change x with one of category ID
+curl -i -H "Content-Type: application/json" -X PUT -d '{"name":"Update name"}' http://salestock-backend-ta.herokuapp.com/products/x
+```
+
 
 ## License
 BSD 3-clause

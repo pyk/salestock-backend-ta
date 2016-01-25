@@ -77,4 +77,24 @@ router.get('/products/:id', function(req, res) {
       })
 })
 
+router.put('/products/:id', function(req, res) {
+  var productID = req.params.id;
+  var updatedName = req.body['name'];
+
+  if(updatedName != undefined) {
+    new Product({id: productID})
+        .save({name: updatedName}, {patch: true})
+        .then(function(updatedProduct) {
+          res.jsonp({status: '200 OK', data: updatedProduct});
+        })
+        .catch(function(error) {
+          res.status(500)
+              .jsonp({error: 'Product ID is invalid or not exists in the database.'})
+        });
+  } else {
+    res.status(500)
+        .jsonp({error: 'Invalid JSON payload. Please read the documentation.'});
+  }
+})
+
 module.exports = router;
