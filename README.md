@@ -4,6 +4,7 @@ This is The Salestock Backend TA. They give me two cases, and I choose the produ
 The end goal of this TA is to build API endpoint for that case.
 
 ## API Endpoints
+Document below contains description for each endpoints and accompanied by `curl(1)` command to test the API endpoint. You can copy & paste those command to your terminal.
 
 You can also use `postman` extension on Google Chrome or similar tool that you are familiar with.
 
@@ -22,5 +23,9 @@ curl -i -H "Accept: application/json" http://salestock-backend-ta.herokuapp.com/
 ``` 
 View in your browser [salestock-backend-ta.herokuapp.com/categories](http://salestock-backend-ta.herokuapp.com/categories).
 
+#### Create
+```
+
+```
 ## License
 BSD 3-clause
