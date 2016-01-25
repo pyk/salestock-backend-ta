@@ -84,5 +84,22 @@ DELETE /categories/:id - Delete a category
 curl -i -H "Accept: application/json" -X DELETE http://salestock-backend-ta.herokuapp.com/categories/x
 ```
 
+
+### Products
+Each products have many categories.
+
+#### List of Products
+This endpoint is used for displaying all products and their categories.
+
+```
+GET /products - Request all products
+
+# curl(1) test, copy & paste this on your terminal
+curl -i -H "Accept: application/json" http://salestock-backend-ta.herokuapp.com/products
+``` 
+
+View in your browser [salestock-backend-ta.herokuapp.com/products](http://salestock-backend-ta.herokuapp.com/products).
+
+
 ## License
 BSD 3-clause
