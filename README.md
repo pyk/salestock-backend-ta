@@ -100,6 +100,15 @@ curl -i -H "Accept: application/json" http://salestock-backend-ta.herokuapp.com/
 
 View in your browser [salestock-backend-ta.herokuapp.com/products](http://salestock-backend-ta.herokuapp.com/products).
 
+#### Create a Product
+This endpoint is used to create new product. The payload of request is a JSON object with `name` and `categories` field. `categories` field have value an array of category name for the product.
+
+```
+POST /products - Create new product
+
+# curl(1) test, copy & paste this on your terminal
+curl -i -H "Content-Type: application/json" -X POST -d '{"name":"Product Demo", "categories": ["Dress", "Long Dress"]}' http://salestock-backend-ta.herokuapp.com/products
+```
 
 ## License
 BSD 3-clause
