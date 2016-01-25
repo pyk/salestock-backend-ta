@@ -1,7 +1,7 @@
 var knexFile = require('./knexfile');
 var knexConfig = knexFile.development;
 if(process.env.SALESTOCK_PROD == 'true') {
-  knexConfig = knexfile.production;
+  knexConfig = knexFile.production;
 }
 var knex = require('knex')(knexConfig);
 
