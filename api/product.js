@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Promise = require('bluebird');
 var _ = require('lodash');
+var knex = require('../database').knexInstance;
 var Product = require('./models').Product;
 var Category = require('./models').Category;
 
@@ -96,5 +97,30 @@ router.put('/products/:id', function(req, res) {
         .jsonp({error: 'Invalid JSON payload. Please read the documentation.'});
   }
 })
+
+router.delete('/products/:id', function(req, res) {
+  var productID = req.params.id;
+  knex('categories_products')
+      .where('product_id', productID)
+      .del()
+      .then(function() {
+        new Product({id: productID})
+            .destroy()
+            .then(function(product) {
+              res.jsonp({status: "200 OK"});
+            })
+            .catch(function(error) {
+              console.log(error);
+              res.status(500)
+                  .jsonp({error: "Product ID is invalid, not exists in the database."});
+            });
+      })
+      .catch(function(error) {
+        res.status(500)
+            .jsonp({error: "Product ID is invalid, not exists in the database."});
+      });
+    
+})
+
 
 module.exports = router;

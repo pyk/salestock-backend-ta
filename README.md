@@ -138,6 +138,16 @@ PUT /products/:id - Update a Product
 curl -i -H "Content-Type: application/json" -X PUT -d '{"name":"Update name"}' http://salestock-backend-ta.herokuapp.com/products/x
 ```
 
+#### Delete a Product
+This endpoint is used to delete a product. 
+
+```
+DELETE /products/:id - Delete a product
+
+# curl(1) test, copy & paste this on your terminal
+# change x with one of category ID
+curl -i -H "Accept: application/json" -X DELETE http://salestock-backend-ta.herokuapp.com/categories/x
+```
 
 ## License
 BSD 3-clause
