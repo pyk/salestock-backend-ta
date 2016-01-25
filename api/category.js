@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var models = require('./models');
-var Category = models.Category;
+var Category = require('./models').Category;
 
 // Endpoint: GET /categories
 router.get('/categories', function(req, res) {

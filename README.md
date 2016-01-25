@@ -1,50 +1,24 @@
 # Salestock Backend Technical Assigment
-This is The Salestock Backend TA. They give me two cases, and I choose the product and category management with hierarchical tree data for category. The end goal of this TA is to build API endpoint for the case that production-ready grade.
+This is The Salestock Backend TA. They give me two cases, and I choose the product and category management with hierarchical tree data for category. 
 
-The mandatory assesment points is
+The end goal of this TA is to build API endpoint for that case.
 
-1. REST API routing design
-2. Apps modeling and abstraction skill
+## API Endpoints
 
-which 2 of this assesment points should be perfect 5. 
+You can also use `postman` extension on Google Chrome or similar tool that you are familiar with.
 
-I know, you may think that those assesment points is sounds very subjective. Because different organization have different perspective about how they design REST API and modeling the apps. So, it's hard to have 5 points on this subjective one.
+### Categories
+Each category have exactly one sup-category/parent category and many sub-category/childs category.
 
-I try to ask them to elaborate more and if there is exists some kind of style guide from their organization that I can use as reference. But, I got no answer from them.
-
-I feel a litle bit strange. I want create API endpoint that fit their culture, but I have no clue. **I don't know if it's ever going to work**. I just build what I believe that this is the best approach of REST API and Apps modeling.
-
-The technology constraint is they only allowed me to use Scala or Nodejs. This is doen't matter actually. I can't write any Scala because my litle notebook doesn't have enough memory to run JVM, it's ironic. I have build a several in-house production apps in Nodejs and it's very hard to manage, especially for team. 
-
-Just my 2c, **they should try [Go programming language](https://golang.org)** and get the hell out from javascript-callback-hell + complexity-of-NPM-modules. Also, The core community of Nodejs is too political. It's to risky to bet the core technology of the company in Nodejs. I hope their technical director know that.
-
-## Status
-WIP
-
-## Demo
-
-TODO: screencast should be enough?
-
-## API
-
-TODO:
+TODO: add image
 
 ```
-Categories
-GET /categories - fetch all categories
-POST /categories - create a new category
-GET /categories/:id - fetch a single category
-PUT /categories/:id - update category
-DELETE /categories/:id - delete category
+GET /categories
 
-Product
-GET /products - fetch all products
-POST /products - create a new product
-GET /products/:id - fetch a single product by id
-PUT /products/:id - update products
-DELETE /products/:id - delete product
-GET /products/category/:id - fetch all prpducts from a single category
+# curl(1) test, copy & paste this on your terminal
+curl -i -H "Accept: application/json" http://salestock-backend-ta.herokuapp.com/categories
 ```
+fetch all categories. 
 
 ## License
 BSD 3-clause
