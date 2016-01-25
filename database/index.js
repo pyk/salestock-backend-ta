@@ -10,11 +10,12 @@ module.exports = {
     console.log('salestock-api: performs database migration...');
     knex.migrate.latest()
       .then(function() {
-        console.log('salestock-api: seeding the database ...');
-        return knex.seed.run();
-      })
-      .then(function() {
-        console.log('salestock-api: migration finished');
+        if(process.env.SALESTOCK_DB_SEED == 'true') {
+          console.log('salestock-api: seeding the database ...');
+          return knex.seed.run();  
+        } else {
+          console.log('salestock-api: migration finished');
+        }
       })
       .catch(function(error) {
         console.log('salestock-api: migration failed');
