@@ -8,6 +8,14 @@ var Category = bookshelf.Model.extend({
   }
 });
 
+var Product = bookshelf.Model.extend({
+    tableName: 'products',
+    categories: function() {
+        return this.belongsToMany(Category);
+    }
+})
+
 module.exports = {
-    Category: Category
+    Category: Category,
+    Product: Product
 }

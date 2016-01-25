@@ -1,6 +1,7 @@
 var express = require('express');
 var api = express();
 var categoryRouter = require('./category');
+var productRouter = require('./product');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
 
@@ -24,6 +25,7 @@ module.exports = {
     // use a router
     api.use(index);
     api.use(categoryRouter);
+    api.use(productRouter);
 
     api.listen(port, function() {
       console.log('salestock-api: server running on port', port);
