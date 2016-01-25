@@ -27,7 +27,24 @@ TODO: screencast should be enough?
 
 ## API
 
-TODO: token-based auth, add product(s) to cart, remove product from cart, apply discount coupon.
+TODO:
+
+```
+Categories
+GET /categories - fetch all categories
+POST /categories - create a new category
+GET /categories/:id - fetch a single category
+PUT /categories/:id - update category
+DELETE /categories/:id - delete category
+
+Product
+GET /products - fetch all products
+POST /products - create a new product
+GET /products/:id - fetch a single product by id
+PUT /products/:id - update products
+DELETE /products/:id - delete product
+GET /products/category/:id - fetch all prpducts from a single category
+```
 
 ## License
 BSD 3-clause
