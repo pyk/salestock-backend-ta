@@ -96,9 +96,12 @@ This endpoint is used for displaying all products and their categories.
 
 ```
 GET /products - Request all products
+GET /products/category/:id - Request all products from a single category
 
 # curl(1) test, copy & paste this on your terminal
 curl -i -H "Accept: application/json" http://salestock-backend-ta.herokuapp.com/products
+
+curl -i -H "Accept: application/json" http://salestock-backend-ta.herokuapp.com/products/category/13
 ``` 
 
 View in your browser [salestock-backend-ta.herokuapp.com/products](http://salestock-backend-ta.herokuapp.com/products).

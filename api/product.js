@@ -122,5 +122,18 @@ router.delete('/products/:id', function(req, res) {
     
 })
 
+router.get('/products/category/:id', function(req, res) {
+  var categoryID = req.params.id;
+  new Category({id: categoryID})
+    .fetch({withRelated: ['products']})
+    .then(function(category) {
+      res.jsonp({status: '200 OK', data: category});
+    })
+    .catch(function(error) {
+      console.log(error);
+      res.status(500)
+          .jsonp({error: 'Category ID not found.'});
+    })
+})
 
 module.exports = router;
