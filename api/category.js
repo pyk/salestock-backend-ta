@@ -90,4 +90,17 @@ router.put('/categories/:id', function(req, res) {
   }
 })
 
+router.delete('/categories/:id', function(req, res) {
+  var categoryID = req.params.id;
+  new Category({id: categoryID})
+      .destroy()
+      .then(function(category) {
+        res.jsonp({status: "200 OK"});
+      })
+      .catch(function(error) {
+        res.status(500)
+            .jsonp({error: "Category ID is invalid, not exists in the database or still become a parent for another category."});
+      })
+})
+
 module.exports = router;
