@@ -6,7 +6,6 @@ module.exports = {
   development: {
     client: 'postgresql',
     connection: 'postgres://vagrant:vagrant@localhost/salestock',
-    debug: true,
     pool: {
       min: 2,
       max: 10
