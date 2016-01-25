@@ -4,9 +4,23 @@ This is The Salestock Backend TA. They give me two cases, and I choose the produ
 The end goal of this TA is to build API endpoint for that case.
 
 ## API Endpoints
-Document below contains description for each endpoints and accompanied by `curl(1)` command to test the API endpoint. You can copy & paste those command to your terminal.
+Each description of endpoint will formatted like the following:
 
-You can also use `postman` extension on Google Chrome or similar tool that you are familiar with.
+```
+[HTTP METHOD] [ENDPOINT] - [DESCRIPTION]
+```
+
+Each `[ENDPOINT]` is relative to `http://salestock-backend-ta.herokuapp.com`. 
+
+So for example 
+
+```
+GET /categories - List of all categories including related sub-category
+```
+
+is translated to `http://salestock-backend-ta.herokuapp.com/categories`.
+
+Also, there is a `curl(1)` command that I use to play with the endpoint. You can copy & paste those command to your terminal. You can also use `postman` extension on Google Chrome or similar tool that you are familiar with.
 
 ### Categories
 Each category have exactly one sup-category/parent category and many sub-category/childs category.
@@ -14,6 +28,7 @@ Each category have exactly one sup-category/parent category and many sub-categor
 TODO: add image hierarchy of category
 
 #### List
+This endpoint is used for displaying all categories and related sub-categories. It can be useful for navigation, dropdown menu of categories for instance.
 
 ```
 GET /categories - fetch all categories.
@@ -24,8 +39,16 @@ curl -i -H "Accept: application/json" http://salestock-backend-ta.herokuapp.com/
 View in your browser [salestock-backend-ta.herokuapp.com/categories](http://salestock-backend-ta.herokuapp.com/categories).
 
 #### Create
-```
+This endpoint is used to create new category. The payload of request is a JSON object with `name` and `parent_name` field.
 
 ```
+POST /categories - create a new category
+
+# curl(1) test, copy & paste this on your terminal
+curl -i -H "Content-Type: application/json" -X POST -d '{"name":"Demo Dress", "parent_name": "Dress"}' http://salestock-backend-ta.herokuapp.com/categories
+```
+
+For the root category, `parent_name` should be empty string. Newly created category will available on list endpoint.
+
 ## License
 BSD 3-clause

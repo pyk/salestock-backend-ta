@@ -12,4 +12,56 @@ router.get('/categories', function(req, res) {
       })
 });
 
+// TL;DR
+// Your organization should use Golang https://golang.org
+//
+// Welcome to Javascript callback hell! 
+// You need a Promise (.then().catch()) to perform sync operation.
+// And Promise is a BAD practice in programming. 
+// You need to think that your code will executed async from
+// the first time. It may seems easy. but, bug from unexpected
+// operation/input will hunt you down.
+router.post('/categories', function(req, res) {
+  // Get the payload data
+  var name = req.body['name'];
+  var parentName = req.body['parent_name'];
+
+  if(name == undefined) {
+    res.status(500)
+        .jsonp({error: 'Invalid JSON payload. Please read the documentation.'});
+  } else {
+    if(parentName != '') {
+      // Fetch parent ID and insert the child
+      new Category({name: parentName})
+          .fetch()
+          .then(function(parent) {
+            new Category({name: name, parent_id: parent.get('id')})
+                .save()
+                .then(function(category) {
+                  res.jsonp({status: '200 OK', data: category});
+                })
+                .catch(function(error) {
+                  res.status(500)
+                      .jsonp({error: 'Category already exists.'});
+                })
+          })
+          .catch(function(error) {
+            res.status(500)
+                .jsonp({error: 'Parent category not exists.'});
+          });
+    } else {
+      // Insert root category
+      new Category({name: name, parent_id: parent.get('id')})
+          .save()
+          .then(function(category) {
+            res.jsonp({status: '200 OK', data: category});
+          })
+          .catch(function(error) {
+            res.jsonp({error: 'Failed to create new category'});
+          });
+    }   
+  }
+
+})
+
 module.exports = router;
